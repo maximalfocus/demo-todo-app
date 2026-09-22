@@ -25,5 +25,12 @@ class TodoList:
                 return task
         raise KeyError(task_id)
 
+    def remove(self, task_id):
+        for i, task in enumerate(self.tasks):
+            if task.id == task_id:
+                del self.tasks[i]
+                return
+        raise ValueError(f"todo: no task with id {task_id}")
+
     def pending(self):
         return [t for t in self.tasks if not t.done]

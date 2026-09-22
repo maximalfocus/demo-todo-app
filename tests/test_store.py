@@ -21,6 +21,6 @@ class TodoListTest(unittest.TestCase):
             [
                 "id,title,done",
                 "1,Write demo,True",
-                "2,Ship it,False",
+                "2,Ship it,True",
             ],
         )

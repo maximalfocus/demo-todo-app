@@ -25,5 +25,11 @@ class TodoList:
                 return task
         raise KeyError(task_id)
 
-    def pending(self):
-        return [t for t in self.tasks if not t.done]
+    def pending(self, page=1, page_size=10):
+        if page < 1:
+            raise ValueError("todo: page must be at least 1")
+        if page_size < 1:
+            raise ValueError("todo: page_size must be at least 1")
+        pending_tasks = [t for t in self.tasks if not t.done]
+        start = (page - 1) * page_size
+        return pending_tasks[start:start + page_size]

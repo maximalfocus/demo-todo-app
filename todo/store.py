@@ -1,4 +1,6 @@
 """An in-memory to-do list."""
+import csv
+import io
 from dataclasses import dataclass, field
 
 
@@ -27,3 +29,11 @@ class TodoList:
 
     def pending(self):
         return [t for t in self.tasks if not t.done]
+
+    def export_csv(self):
+        output = io.StringIO()
+        writer = csv.writer(output)
+        writer.writerow(["id", "title", "done"])
+        for task in self.tasks:
+            writer.writerow([task.id, task.title, task.done])
+        return output.getvalue()

@@ -16,7 +16,7 @@ class Task:
                 date.fromisoformat(self.due_date)
             except (TypeError, ValueError):
                 raise ValueError(
-                    f"due_date must be a real date in YYYY-MM-DD format, got {self.due_date!r}"
+                    f"todo: due_date must be a real date in YYYY-MM-DD format, got {self.due_date!r}"
                 )
 
 

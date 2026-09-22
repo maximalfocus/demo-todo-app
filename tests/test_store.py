@@ -22,8 +22,9 @@ class TodoListTest(unittest.TestCase):
 
     def test_add_with_invalid_due_date_raises(self):
         todos = TodoList()
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValueError) as ctx:
             todos.add("Write demo", due_date="not-a-date")
+        self.assertTrue(str(ctx.exception).startswith("todo:"))
 
     def test_add_with_nonexistent_calendar_date_raises(self):
         todos = TodoList()
